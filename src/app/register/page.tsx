@@ -1,20 +1,26 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import AlertBox from "./components/alertBox";
+import { redirect, useRouter } from "next/navigation";
+import AlertBox from "../components/alertBox";
 
-export default function Login() {
+export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [alert, setAlert] = useState("");
   const router = useRouter();
 
-  const handleLogin = () => {
-    if (username === "admin" && password === "1234") {
-      setAlert("ผู้ใช้นี้ไม่มีสิทธิการใช้งาน!!");
-    } else {
-      setAlert("ผู้ใช้นี้ไม่มีสิทธิการใช้งาน");
+  const handleRegister = () => {
+    if (!username || !password) {
+      setAlert("กรุณากรอกชื่อผู้ใช้และรหัสผ่าน");
+      return;
     }
+
+    if (password !== confirmPassword) {
+      setAlert("รหัสผ่านไม่ตรงกัน");
+      return;
+    }
+    redirect('/page2')
   };
 
   return (
@@ -27,13 +33,6 @@ export default function Login() {
         backgroundColor: "lightgray",
       }}
     >
-      <div style={{ position: "absolute", bottom: "200px" }}>
-        <p>username : admin </p>
-        <p>password : 1234</p>
-      </div>
-      <div style={{ position: "absolute", bottom: "100px" }}>
-        <p style={{fontWeight:'bold'}}>จัดทำโดย : 65051645 พิชยะ หุตะจูฑะ</p>
-      </div>
       <div
         style={{
           backgroundColor: "white",
@@ -51,9 +50,9 @@ export default function Login() {
             textAlign: "center",
           }}
         >
-          ตรวจสอบสิทธิ์การใช้งาน
+          ลงทะเบียนเพื่อใช้งานชั่วคราว
         </h2>
-        {alert && <AlertBox message={alert} color={'red'}/>}
+        {alert && <AlertBox message={alert} />}
         <input
           type="text"
           placeholder="กรอกชื่อผู้ใช้"
@@ -78,6 +77,25 @@ export default function Login() {
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
+            setAlert("");
+          }}
+          style={{
+            width: "100%",
+            padding: "8px 10px",
+            border: "1px solid lightgray",
+            borderRadius: "5px",
+            marginBottom: "1rem",
+            outline: "none",
+          }}
+          required
+        />
+        <input
+          type="password"
+          placeholder="ยืนยันรหัสผ่าน"
+          value={confirmPassword}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+            setAlert("");
           }}
           style={{
             width: "100%",
@@ -91,7 +109,7 @@ export default function Login() {
         />
         <button
           type="submit"
-          onClick={handleLogin}
+          onClick={handleRegister}
           style={{
             width: "100%",
             padding: "0.5rem 0",
@@ -102,7 +120,7 @@ export default function Login() {
             cursor: "pointer",
           }}
         >
-          ตรวจสอบ
+          ลงทะเบียน
         </button>
         <div
           style={{
@@ -111,7 +129,7 @@ export default function Login() {
           }}
         >
           <button
-            onClick={() => router.push("/register")}
+            onClick={() => router.push("/")}
             style={{
               color: "black",
               textAlign: "center",
@@ -120,7 +138,7 @@ export default function Login() {
               cursor: "pointer",
             }}
           >
-            ลงทะเบียนเพื่อใช้งานชั่วคราว
+            กลับไปหน้า login
           </button>
         </div>
       </div>

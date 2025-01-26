@@ -37,7 +37,7 @@ export default function page2() {
               cursor: "pointer",
             }}
           >
-            กลับไปหน้า login
+            กลับไปหน้าตรวจสอบ
           </button>
         </a>
       </div>

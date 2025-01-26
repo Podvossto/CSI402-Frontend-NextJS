@@ -138,7 +138,7 @@ export default function Register() {
               cursor: "pointer",
             }}
           >
-            กลับไปหน้า login
+            กลับไปหน้าตรวจสอบ
           </button>
         </div>
       </div>

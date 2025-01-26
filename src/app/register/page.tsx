@@ -52,7 +52,7 @@ export default function Register() {
         >
           ลงทะเบียนเพื่อใช้งานชั่วคราว
         </h2>
-        {alert && <AlertBox message={alert} />}
+        {alert && <AlertBox message={alert} color="red"/>}
         <input
           type="text"
           placeholder="กรอกชื่อผู้ใช้"

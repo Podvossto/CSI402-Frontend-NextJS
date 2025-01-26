@@ -7,13 +7,16 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState("");
+  const [alertColor, setAlertColor] = useState("red"); // เพิ่ม state สำหรับ color
   const router = useRouter();
 
   const handleLogin = () => {
     if (username === "admin" && password === "1234") {
-      setAlert("ผู้ใช้นี้ไม่มีสิทธิการใช้งาน!!");
+      setAlert("ผู้ใช้นี้มีสิทธิการใช้งาน!");
+      setAlertColor("green");
     } else {
-      setAlert("ผู้ใช้นี้ไม่มีสิทธิการใช้งาน");
+      setAlert("ผู้ใช้นี้ไม่มีสิทธิการใช้งาน!");
+      setAlertColor("red"); 
     }
   };
 
@@ -32,7 +35,7 @@ export default function Login() {
         <p>password : 1234</p>
       </div>
       <div style={{ position: "absolute", bottom: "100px" }}>
-        <p style={{fontWeight:'bold'}}>จัดทำโดย : 65051645 พิชยะ หุตะจูฑะ</p>
+        <p style={{ fontWeight: "bold" }}>จัดทำโดย : 65051645 พิชยะ หุตะจูฑะ</p>
       </div>
       <div
         style={{
@@ -53,7 +56,7 @@ export default function Login() {
         >
           ตรวจสอบสิทธิ์การใช้งาน
         </h2>
-        {alert && <AlertBox message={alert} color={'red'}/>}
+        {alert && <AlertBox message={alert} color={alertColor} />}{" "}
         <input
           type="text"
           placeholder="กรอกชื่อผู้ใช้"

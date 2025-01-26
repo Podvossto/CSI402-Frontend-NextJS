@@ -1,4 +1,4 @@
-// แก้ไขเป็น
+
 const AlertBox = ({ message,color }: { message: string,color:string }) => {
   return (
     <div

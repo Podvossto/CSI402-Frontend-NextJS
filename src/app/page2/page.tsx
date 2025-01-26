@@ -20,10 +20,10 @@ export default function page2() {
           textAlign: "center",
         }}
       >
-        <h1 style={{marginBottom: "1rem" }}>
-          เข้าสู่ระบบสำเร็จ
+        <h1 style={{marginBottom: "1rem",fontSize:'50px',fontWeight:'bold',color:'green' }}>
+          ลงทะเบียนเพื่อใช้งานชั่วคราวสำเร็จ!!!
         </h1>
-        <h2 style={{marginBottom: "1rem" }}>
+        <h2 style={{marginBottom: "2rem" }}>
           คุณมีสิทธิการใช้งาน 30 นาที
         </h2>
         <a href="/" style={{ textDecoration: "none" }}>

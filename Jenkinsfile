@@ -25,11 +25,5 @@ pipeline {
                 print 'Testing'
             }
         }
-
-        stage('Ip and Port') {
-            steps {
-                print 'Ip and Port'
-            }
-        }
     }
 }

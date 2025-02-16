@@ -2,27 +2,41 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                print 'Clone'
+                echo "Clone Code the project From Git"
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        credentialsId: 'your-credentials-id', // ระบุ credentials ID ของคุณ
+                        url: 'https://github.com/Podvossto/CSI402-Frontend-NextJS.git'
+                    ]]
+                ])
             }
         }
 
         stage('Build') {
             steps {
-                print 'Build'
+                echo "Building the project..."
             }
         }
 
-        stage('Deploy Image') {
+        stage('Unit Tests') {
             steps {
-                print 'Deploy Image'
+                echo "Running tests..."
             }
         }
 
-        stage('Testing') {
+        stage('Deploy') {
             steps {
-                print 'Testing'
+                echo "Deploying the application..."
+            }
+        }
+
+        stage('Deployment test') {
+            steps {
+                echo "Running tests..."
             }
         }
     }

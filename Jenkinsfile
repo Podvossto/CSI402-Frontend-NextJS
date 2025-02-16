@@ -9,7 +9,7 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
-                        credentialsId: 'your-credentials-id', // ระบุ credentials ID ของคุณ
+                        credentialsId: 'Pitchaya22894',
                         url: 'https://github.com/Podvossto/CSI402-Frontend-NextJS.git'
                     ]]
                 ])

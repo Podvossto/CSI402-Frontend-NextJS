@@ -18,7 +18,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("csi402-app-image:latest", "-f Dockerfile .")
+                    "bat docker build -t csi402-app-image"
                 }
             }
         }

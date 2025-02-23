@@ -18,7 +18,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat "docker build -t csi402-app-image"
+                    bat "docker build -t csi402-app-image ."
                 }
             }
         }

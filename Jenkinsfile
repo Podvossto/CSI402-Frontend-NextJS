@@ -23,11 +23,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            echo "Cleaning up Docker image..."
-            docker.removeImage('csi402-app-image:latest')
-        }
-    }
 }

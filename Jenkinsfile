@@ -19,8 +19,16 @@ pipeline {
             steps {
                 script {
                     bat 'docker build -t csi402-app-image .'
-
                     bat 'docker run -d --name csi-container -p 54100:3000 csi402-app-image:latest'
+                }
+            }
+        }
+
+        stage('Test Stage') {
+            steps {
+                script {
+                    bat 'pip install robotframework robotframework-seleniumlibrary robotframework-requests'
+                    bat 'robot test.robot'
                 }
             }
         }

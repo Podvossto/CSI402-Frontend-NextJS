@@ -26,6 +26,14 @@ pipeline {
 
         stage('Test Stage') {
             steps {
+                checkout([
+                            $class: 'GitSCM',
+                            branches: [[name: '*/main']],
+                            userRemoteConfigs: [[
+                                credentialsId: 'Pitchaya22894',
+                                url: 'https://github.com/Podvossto/AutomateTestingFrontend.git'
+                            ]]
+                        ])
                 script {
                     bat 'pip install robotframework robotframework-seleniumlibrary robotframework-requests'
                     bat 'robot test.robot'
